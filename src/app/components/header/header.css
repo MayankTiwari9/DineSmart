@@ -1,3 +1,35 @@
-.logo {
-  width: 8vw;
+:host {
+  .logo {
+    width: 8vw;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1vw;
+  }
+
+  .cart-icon {
+    font-weight: 700;
+    color: #00a3ab;
+    font-size: 2vw;
+  }
+
+  .signIn-btn {
+    background: #00a3ab;
+    color: #ffffff;
+    padding: 0.5rem 2rem;
+    border-radius: 6px;
+    border: none;
+    font-size: 1.2vw;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .action-div {
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+  }
 }

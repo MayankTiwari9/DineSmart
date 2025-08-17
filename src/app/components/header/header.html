@@ -3,8 +3,10 @@
     <img class="logo" src="assets/DineSmartLogo.png" alt="DineSmart" />
   </div>
   <div class="action-div">
-    <i class="cil-home"></i>
+    <i class="cil-cart cart-icon"></i>
 
-    <button class="signIn-btn">Sing In</button>
+    <button (click)="isSignIn ? signOut() : signIn()" class="signIn-btn">
+      {{ isSignIn ? 'Sign Out' : 'Sign In' }}
+    </button>
   </div>
 </div>
