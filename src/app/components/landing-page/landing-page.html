@@ -1,0 +1,72 @@
+<!-- <div class="restaurant-container">
+  <div class="restaurant-div" *ngFor="let restaurant of restaurantData">
+    <img [src]="restaurant.imageUrl" [alt]="restaurant.name" />
+    <div class="name-rating-div">
+      <div class="name-div">{{ restaurant.name }}</div>
+      <div class="rating-div">
+        <div class="rating-star">{{ restaurant.rating }}</div>
+        <div class="no-of-reviews">({{`${restaurant.noOfReviews} Reviews`}})</div>
+      </div>
+    </div>
+    <div class="cuisine-container">
+      <div class="cuisine" *ngFor="let cuisine of restaurant.cuisines">{{ cuisine }}</div>
+    </div>
+    <div class="category-div">
+      @if (restaurant.veg) {
+      <div class="veg">Vegetarian</div>
+      } @if (restaurant.nonVeg) {
+      <div class="non-veg">Non Vegetarian</div>
+      }
+    </div>
+
+    <div class="button-container">
+      <button class="book-table">Book Table</button>
+      <button class="order-now">Order Now</button>
+    </div>
+  </div>
+</div> -->
+
+<div class="restaurant-container">
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let restaurant of restaurantData">
+      <div class="restaurant-div card h-100">
+        <img
+          [src]="restaurant.imageUrl"
+          [alt]="restaurant.name"
+          class="card-img-top"
+          style="height: 20vw"
+        />
+
+        <div class="card-body">
+          <div class="name-rating-div d-flex justify-content-between align-items-center">
+            <div class="restaurant-name">{{ restaurant.name }}</div>
+            <div class="rating-div">
+              <span class="rating-star">{{ restaurant.rating }}</span>
+              <span class="no-of-reviews">({{ restaurant.noOfReviews }} Reviews)</span>
+            </div>
+          </div>
+
+          <div class="cuisine-container mt-2">
+            <span class="badge me-1 cuisine" *ngFor="let cuisine of restaurant.cuisines">
+              {{ cuisine }}
+            </span>
+          </div>
+
+          <div class="category-div mt-2">
+            @if (restaurant.veg) {
+            <span class="badge bg-success category">Vegetarian</span>
+            } @if (restaurant.nonVeg) {
+            <span class="badge bg-danger category">Non Vegetarian</span>
+            }
+          </div>
+        </div>
+
+        <div class="card-footer text-center button-container">
+          <button class="book-table">Book Table</button>
+
+          <button class="order-now">Order Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
