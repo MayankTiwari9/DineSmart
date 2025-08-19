@@ -1,34 +1,38 @@
-<!-- <div class="restaurant-container">
-  <div class="restaurant-div" *ngFor="let restaurant of restaurantData">
-    <img [src]="restaurant.imageUrl" [alt]="restaurant.name" />
-    <div class="name-rating-div">
-      <div class="name-div">{{ restaurant.name }}</div>
-      <div class="rating-div">
-        <div class="rating-star">{{ restaurant.rating }}</div>
-        <div class="no-of-reviews">({{`${restaurant.noOfReviews} Reviews`}})</div>
-      </div>
-    </div>
-    <div class="cuisine-container">
-      <div class="cuisine" *ngFor="let cuisine of restaurant.cuisines">{{ cuisine }}</div>
-    </div>
-    <div class="category-div">
-      @if (restaurant.veg) {
-      <div class="veg">Vegetarian</div>
-      } @if (restaurant.nonVeg) {
-      <div class="non-veg">Non Vegetarian</div>
-      }
-    </div>
-
-    <div class="button-container">
-      <button class="book-table">Book Table</button>
-      <button class="order-now">Order Now</button>
-    </div>
-  </div>
-</div> -->
-
 <div class="restaurant-container">
+  <div class="search-container">
+    <div class="d-flex align-items-center search-box">
+      <!-- Search Icon -->
+      <span
+        class="input-group-text bg-white border-none"
+        style="user-select: none; cursor: default; border: none"
+        tabindex="-1"
+      >
+        <i class="cil-magnifying-glass"></i>
+      </span>
+      <input
+        type="text"
+        class="form-control search-input"
+        style="user-select: none"
+        placeholder="Search By Restaurant Name...."
+        [(ngModel)]="searchText"
+        (keyup.enter)="onSearch()"
+      />
+      <span
+        *ngIf="searchText"
+        class="input-group-text bg-white border-none"
+        style="user-select: none; cursor: pointer; border: none"
+        tabindex="-1"
+        (click)="clearSearch()"
+      >
+        <i class="cil-x"></i>
+      </span>
+    </div>
+    <button class="btn submit-btn" (click)="onSearch()">Search</button>
+  </div>
+
+  @if (filteredItems.length > 0) {
   <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let restaurant of restaurantData">
+    <div class="col-md-4 mb-4" *ngFor="let restaurant of filteredItems">
       <div class="restaurant-div card h-100">
         <img
           [src]="restaurant.imageUrl"
@@ -69,4 +73,18 @@
       </div>
     </div>
   </div>
+  } @else{
+  <div class="no-data-container">
+    <span
+      class="input-group-text bg-white border-none"
+      style="user-select: none; cursor: default; border: none"
+      tabindex="-1"
+    >
+      <i class="cil-ban ban-icon"></i>
+    </span>
+    <div class="no-data-div" style="user-select: none; cursor: default; border: none">
+      No Data Found
+    </div>
+  </div>
+  }
 </div>
