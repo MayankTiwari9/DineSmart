@@ -1,4 +1,33 @@
 :host {
+  .search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2vw 0;
+    gap: 2vw;
+  }
+  .search-box {
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    gap: 1vw;
+  }
+
+  .search-box .form-control:focus {
+    box-shadow: none;
+    border-color: #ccc;
+  }
+
+  .search-input {
+    border: none;
+  }
+
+  .submit-btn {
+    background-color: #00a3ab;
+    color: #ffffff;
+  }
+
   .restaurant-container {
     width: 88%;
     margin-left: 6%;
@@ -64,5 +93,22 @@
     font-size: 1.1vw;
     border: 1px solid #00a3ab;
     border-radius: 0.5vw;
+  }
+  .no-data-container {
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    span {
+      .ban-icon {
+        color: #00a3ab;
+        font-size: 4vw;
+      }
+    }
+    .no-data-div {
+      font-size: 2vw;
+    }
   }
 }

@@ -5,20 +5,12 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Header } from './components/header/header';
 import { LandingPage } from './components/landing-page/landing-page';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    App,
-    Header,
-    LandingPage
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [
-    provideBrowserGlobalErrorListeners()
-  ],
-  bootstrap: [App]
+  declarations: [App, Header, LandingPage],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [provideBrowserGlobalErrorListeners()],
+  bootstrap: [App],
 })
-export class AppModule { }
+export class AppModule {}
