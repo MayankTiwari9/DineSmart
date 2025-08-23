@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Account } from '../../shared/services/account/account';
 
 @Component({
   selector: 'app-landing-page',
@@ -11,7 +12,7 @@ export class LandingPage {
   public searchText: string = '';
   public filteredItems: any = [];
 
-  constructor() {
+  constructor(private accountService: Account) {
     this.restaurantData = [
       {
         id: 1,
@@ -126,23 +127,29 @@ export class LandingPage {
     ];
 
     this.filteredItems = this.restaurantData;
+
+    // this.getAllRestaurants();
   }
 
   ngOnInit() {}
 
   onSearch() {
-    console.log('Searching for:', this.searchText);
 
     const searchedItems = this.restaurantData.filter((item: any) =>
       item.name.toLowerCase().includes(this.searchText.toLowerCase())
     );
 
     this.filteredItems = searchedItems;
-    console.log(searchedItems);
   }
 
-  clearSearch(){
+  clearSearch() {
     this.searchText = '';
     this.filteredItems = this.restaurantData;
+  }
+
+  getAllRestaurants() {
+    this.accountService.getRestaurants().subscribe((restaurants) => {
+      this.filteredItems = restaurants;
+    });
   }
 }

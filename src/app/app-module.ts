@@ -7,10 +7,12 @@ import { Header } from './components/header/header';
 import { LandingPage } from './components/landing-page/landing-page';
 import { FormsModule } from '@angular/forms';
 import { Footer } from './components/footer/footer';
+import { HttpClientModule } from '@angular/common/http';
+import { Auth } from './components/auth/auth';
 
 @NgModule({
-  declarations: [App, Header, LandingPage, Footer],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  declarations: [App, Header, LandingPage, Footer, Auth],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [provideBrowserGlobalErrorListeners()],
   bootstrap: [App],
 })

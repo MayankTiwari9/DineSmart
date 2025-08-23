@@ -1,29 +1,26 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: false,
   templateUrl: './header.html',
-  styleUrl: './header.css'
+  styleUrl: './header.css',
 })
 export class Header {
   public isSignIn: boolean;
 
-  constructor(){
+  constructor(private router: Router) {
     this.isSignIn = false;
   }
 
-  ngOnInit(){
+  ngOnInit() {}
 
+  signIn() {
+    this.router.navigateByUrl('auth');
   }
 
-  signIn(){
-    console.log('Sing In Button Clicked !!');
-    this.isSignIn = true;
-  }
-
-  signOut(){
-    console.log('Sing Out Button Clicked !!');
-    this.isSignIn = false; 
+  signOut() {
+    this.isSignIn = false;
   }
 }

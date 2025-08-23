@@ -30,7 +30,7 @@
     <button class="btn submit-btn" (click)="onSearch()">Search</button>
   </div>
 
-  @if (filteredItems.length > 0) {
+  @if (filteredItems && filteredItems.length > 0) {
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let restaurant of filteredItems">
       <div class="restaurant-div card h-100">

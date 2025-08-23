@@ -1,0 +1,101 @@
+<div class="auth-container">
+  @if(isSigningIn){
+
+  <div class="login-container">
+    <div class="img-container">
+      <img src="assets/DineSmartLogo.png" alt="DineSmart" class="logo-img" />
+    </div>
+    <div class="login-header">Log in to your account</div>
+    <div class="welcome-msg">Welcome back! Please enter your details.</div>
+    <div class="email-container">
+      <label for="email" class="email-label">Email <span class="required-mark">*</span></label>
+      <input
+        type="email"
+        id="email"
+        class="email-input"
+        placeholder="Email Address"
+        [(ngModel)]="userEmail"
+      />
+    </div>
+    <div class="password-container">
+      <label for="password" class="password-label"
+        >Password <span class="required-mark">*</span></label
+      >
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="password-input"
+        placeholder="Password"
+        [(ngModel)]="userPassword"
+      />
+    </div>
+    @if(showErrorMsg){
+    <div class="error-message">* {{ errorMsg }}</div>
+    }
+    <div class="remember-forgot-container">
+      <div class="remember-container">
+        <input type="checkbox" class="remember-check" />
+        <div class="remember-text">Remember Me</div>
+      </div>
+      <div class="forgot-container">Forgot Password</div>
+    </div>
+    <button class="signin-btn" (click)="submit('login')">Sign in</button>
+    <div class="no-account">
+      Don't have an account?
+      <span class="signup-link" (click)="toggleSingIn()">Sign Up</span>
+    </div>
+  </div>
+
+  } @if(!isSigningIn){
+  <div class="signup-container">
+    <div class="img-container">
+      <img src="assets/DineSmartLogo.png" alt="DineSmart" class="logo-img" />
+    </div>
+    <div class="signup-header">Sign Up to Dine Smart</div>
+    <div class="email-container">
+      <label for="email" class="email-label">Email <span class="required-mark">*</span></label>
+      <input
+        type="email"
+        id="email"
+        class="email-input"
+        placeholder="Email Address"
+        [(ngModel)]="userEmail"
+      />
+    </div>
+    <div class="password-container">
+      <label for="password" class="password-label"
+        >Password <span class="required-mark">*</span></label
+      >
+      <input
+        type="password"
+        name="password"
+        id="password"
+        class="password-input"
+        placeholder="Password"
+        [(ngModel)]="userPassword"
+      />
+    </div>
+    <div class="confirm-password-container">
+      <label for="confirm-password" class="confirm-password-label"
+        >Confirm Password <span class="required-mark">*</span></label
+      >
+      <input
+        type="password"
+        name="confirm-password"
+        id="confirm-password"
+        class="confirm-password-input"
+        placeholder="Confirm Password"
+        [(ngModel)]="userConfirmPassword"
+      />
+    </div>
+    @if(showErrorMsg){
+    <div class="error-message">* {{ errorMsg }}</div>
+    }
+    <button class="signup-btn" (click)="submit('singup')">Sign Up</button>
+    <div class="no-account">
+      Already have an account? <span class="signin-link" (click)="toggleSingIn()">Sign In</span>
+    </div>
+  </div>
+  }
+</div>
