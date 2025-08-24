@@ -128,13 +128,12 @@ export class LandingPage {
 
     this.filteredItems = this.restaurantData;
 
-    // this.getAllRestaurants();
+    this.getAllRestaurants();
   }
 
   ngOnInit() {}
 
   onSearch() {
-
     const searchedItems = this.restaurantData.filter((item: any) =>
       item.name.toLowerCase().includes(this.searchText.toLowerCase())
     );

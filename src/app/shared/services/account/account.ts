@@ -9,7 +9,7 @@ export class Account {
   constructor(private api: Api) {}
 
   getRestaurants() {
-    return this.api.get('restaurants/').pipe(
+    return this.api.get('restaurants').pipe(
       map((response) => {
         if (response) {
           console.log(response);
