@@ -132,4 +132,23 @@
     font-size: 1vw;
     cursor: pointer;
   }
+
+  .toastMessage {
+    position: absolute;
+    top: 1vw;
+    right: 1vw;
+    padding: 1vw;
+    text-align: center;
+    color: #ffffff;
+    border: none;
+    border-radius: 1vw;
+    cursor: pointer;
+  }
+
+  .success {
+    background: green;
+  }
+  .error {
+    background: red;
+  }
 }

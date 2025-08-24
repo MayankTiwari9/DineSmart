@@ -9,13 +9,36 @@ export class Account {
   constructor(private api: Api) {}
 
   getRestaurants() {
-
     return this.api.get('restaurants/').pipe(
       map((response) => {
         if (response) {
           console.log(response);
         } else {
           console.log('error');
+        }
+      })
+    );
+  }
+
+  createUser(body: any) {
+    return this.api.post('user/signup', body).pipe(
+      map((response) => {
+        if (response) {
+          console.log(response);
+        } else {
+          console.error('error');
+        }
+      })
+    );
+  }
+
+  loginUser(body: any) {
+    return this.api.post('user/login', body).pipe(
+      map((response) => {
+        if (response) {
+          return response.data;
+        } else {
+          console.error('error');
         }
       })
     );

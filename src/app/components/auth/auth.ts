@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Account } from '../../shared/services/account/account';
 
 @Component({
   selector: 'app-auth',
@@ -13,14 +14,20 @@ export class Auth {
   public userConfirmPassword: string;
   public showErrorMsg: boolean;
   public errorMsg: string;
+  public isToastMessage: boolean;
+  public toastMessage: string;
+  public toastStatus: string;
 
-  constructor() {
+  constructor(private accountService: Account) {
     this.isSigningIn = true;
     this.userEmail = '';
     this.userPassword = '';
     this.userConfirmPassword = '';
     this.showErrorMsg = false;
     this.errorMsg = '';
+    this.isToastMessage = false;
+    this.toastMessage = '';
+    this.toastStatus = '';
   }
 
   toggleSingIn() {
@@ -63,6 +70,8 @@ export class Auth {
         password: this.userPassword,
       };
 
+      this.loginUser(userData);
+
       this.showErrorMsg = false;
       this.errorMsg = '';
     }
@@ -101,8 +110,9 @@ export class Auth {
       const userData = {
         email: this.userEmail,
         password: this.userPassword,
-        confirmPassword: this.userConfirmPassword,
       };
+
+      this.createUser(userData);
 
       this.showErrorMsg = false;
       this.errorMsg = '';
@@ -112,5 +122,70 @@ export class Auth {
   isGmailEmailConstructor(email: string) {
     const gmailRegex = new RegExp('^[a-zA-Z0-9._%+-]+@gmail\\.com$');
     return gmailRegex.test(email);
+  }
+
+  createUser(body: any) {
+    this.accountService.createUser(body).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.toastMessage = 'User Created Successfully !';
+        this.toastStatus = 'success';
+        this.isToastMessage = true;
+
+        setTimeout(() => {
+          this.toastMessage = '';
+          this.toastStatus = '';
+          this.isToastMessage = false;
+        }, 3000);
+      },
+      error: (error) => {
+        this.toastMessage = error.error.message;
+        this.toastStatus = 'error';
+        this.isToastMessage = true;
+        console.log(error);
+
+        setTimeout(() => {
+          this.toastMessage = '';
+          this.toastStatus = '';
+          this.isToastMessage = false;
+        }, 3000);
+      },
+    });
+  }
+
+  loginUser(body: any) {
+    this.accountService.loginUser(body).subscribe({
+      next: (response) => {
+        console.log(response);
+
+        this.toastMessage = 'User Created Successfully !';
+        this.toastStatus = 'success';
+        this.isToastMessage = true;
+
+        setTimeout(() => {
+          this.toastMessage = '';
+          this.toastStatus = '';
+          this.isToastMessage = false;
+        }, 3000);
+      },
+      error: (error) => {
+        this.toastMessage = error.error.message;
+        this.toastStatus = 'error';
+        this.isToastMessage = true;
+        console.log(error);
+
+        setTimeout(() => {
+          this.toastMessage = '';
+          this.toastStatus = '';
+          this.isToastMessage = false;
+        }, 3000);
+      },
+    });
+  }
+
+  hideToast() {
+    this.toastMessage = '';
+    this.toastStatus = '';
+    this.isToastMessage = false;
   }
 }

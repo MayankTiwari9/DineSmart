@@ -99,3 +99,13 @@
   </div>
   }
 </div>
+
+@if(isToastMessage){
+<div
+  class="toastMessage"
+  (click)="hideToast()"
+  [ngClass]="toastStatus === 'success' ? 'success' : 'error'"
+>
+  {{ toastMessage }}
+</div>
+}
